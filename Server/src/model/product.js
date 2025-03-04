@@ -11,9 +11,7 @@ const productSchema= new mongoose.Schema({
         ref:"Category",
         required:true,
     },
-
 })
 
  const Product= mongoose.model("Product",productSchema) 
-
  export default Product
