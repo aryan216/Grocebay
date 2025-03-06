@@ -1,4 +1,4 @@
-
+import jwt from "jsonwebtoken";
 
 export const verifyToken=(req,reply)=>{
     try{
@@ -13,7 +13,6 @@ export const verifyToken=(req,reply)=>{
         return true;
 
     }catch(error){
-        return reply.status(403).send({message:"Invalid token"});
+        return reply.status(403).send({message:"Invalid or expired token"});
     }
-
 }

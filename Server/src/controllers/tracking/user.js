@@ -1,4 +1,4 @@
-import { DeliveryPartner, Customer } from "../../model/index";
+import { DeliveryPartner, Customer } from "../../model/index.js";
 
 export const updateUser = async (req, reply) => {
   try {
