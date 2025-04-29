@@ -2,35 +2,39 @@ import AdminJS from "adminjs";
 import AdminJSFastify from "@adminjs/fastify"
 import * as AdminJSMongoose from "@adminjs/mongoose"
 import * as Models from "../model/index.js"
-import { authenticate, COOKIE_PASSWORD , sessionStore } from "./config"
+import { authenticate, COOKIE_PASSWORD , sessionStore } from "./config.js"
 import {dark,light,noSidebar} from "@adminjs/themes"
 
 AdminJS.registerAdapter(AdminJSMongoose)
 
 export const admin= new AdminJS({
-    resources:[
+    resources: [
         {
-            resource:Models.Customer,
-            options:{
-                listProperties: ["phone","role","isActivated"],
-                filterProperties:["phone","role"]
-            },
-            resource:Models.Admin,
-            options:{
-                listProperties: ["phone","role","isActivated"],
-                filterProperties:["phone","role"]
-            },
-            resource:Models.DeliveryPartner,
-            options:{
-                listProperties: ["phone","role","isActivated"],
-                filterProperties:["phone","role"]
-            },
+            resource: Models.Customer,
+            options: {
+                listProperties: ["phone", "role", "isActivated"],
+                filterProperties: ["phone", "role"]
+            }
         },
-        {resource:Models.Branch},
-        {resource:Models.Product},
-        {resource:Models.Category},
-        {resource:Models.Order},
-        {resource:Models.Counter},
+        {
+            resource: Models.Admin,
+            options: {
+                listProperties: ["phone", "role", "isActivated"],
+                filterProperties: ["phone", "role"]
+            }
+        },
+        {
+            resource: Models.DeliveryPartner,
+            options: {
+                listProperties: ["phone", "role", "isActivated"],
+                filterProperties: ["phone", "role"]
+            }
+        },
+        { resource: Models.Branch },
+        { resource: Models.Product },
+        { resource: Models.Category },
+        { resource: Models.Order },
+        { resource: Models.Counter },
     ],
     branding:{
         companyName: "Grocebay",
