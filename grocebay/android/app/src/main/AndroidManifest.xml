@@ -11,14 +11,14 @@
       android:icon="@mipmap/ic_launcher"
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
-      android:usesClearTextTraffic="true"
+      android:networkSecurityConfig="@xml/network_security_config"
       android:hardwareAccelerated="true"
       android:theme="@style/AppTheme"
       android:supportsRtl="true">
 
       <meta-data 
-       android:name="com.google."
-       android:value="com.google."
+       android:name="com.google.android.geo.API_key"
+       android:value="AIzaSyBc5qooUejy4VIh8rob22jQ_KlvZl6Y0Uo"
       />
 
       <activity
