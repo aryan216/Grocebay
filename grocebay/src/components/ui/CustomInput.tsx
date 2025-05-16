@@ -1,5 +1,6 @@
 import {View, Text, StyleSheet, TouchableOpacity, TextInput} from 'react-native';
 import React, {FC} from 'react';
+import {Colors, Fonts} from '@utils/Constants';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { RFValue } from 'react-native-responsive-fontsize';
 
@@ -38,13 +39,36 @@ const styles = StyleSheet.create({
         marginRight:10
     },
     inputContainer:{
+      width:"70%",
+      fontFamily:Fonts.SemiBold,
+      fontSize:RFValue(12),
+      paddingVertical:14,
+      paddingBottom:16,
+      height:"100%",
+      color:Colors.text,
+      bottom:-1
+
 
     },
     text:{
-
+      width:"10%",
+      marginLeft:10
     },
     flexRow:{
-        
+        flexDirection:"row",
+        alignItems:"center",
+        justifyContent:"space-between",
+        borderRadius:10,
+        borderWidth:0.5,
+        width:"100%",
+        marginVertical:10,
+        backgroundColor:'#fff',
+        shadowOffset:{width:1,height:1},
+        shadowOpacity:0.6,
+        shadowRadius:2,
+        shadowColor:Colors.border,
+        borderColor:Colors.border
+
     }
 
 });
