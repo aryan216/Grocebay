@@ -1,4 +1,4 @@
-import { View, StyleSheet, Image, KeyboardAvoidingView, Platform, Keyboard, Alert } from 'react-native';
+import { View, StyleSheet, Image, KeyboardAvoidingView, Platform, Keyboard, Alert, TouchableOpacity } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { GestureHandlerRootView, PanGestureHandler, State } from 'react-native-gesture-handler';
 import CustomSafeAreaView from '@components/global/CustomSafeAreaView';
@@ -12,6 +12,8 @@ import useKeyboardOffsetHeight from '@utils/useKeyboardOffsetHeight';
 import LinearGradient from 'react-native-linear-gradient';
 import CustomInput from '@components/ui/CustomInput';
 import CustomButton from '@components/ui/CustomButton';
+import { customerLogin } from '@service/authService';
+import Icon from "react-native-vector-icons/MaterialIcons";
 
 const bottomcolors = [...lightColors].reverse();
 
@@ -59,6 +61,8 @@ const CustomerLogin = () => {
     Keyboard.dismiss()
     setLoading(true);
     try {
+      await customerLogin(phoneNumber)
+      resetAndNavigate('ProductDashboard')
       
     } catch (error) {
       Alert.alert("Login Failed")
@@ -127,7 +131,11 @@ const CustomerLogin = () => {
           By continuing, you agree to our terms of service and privacy policy
         </CustomText>
       </View>
-    </GestureHandlerRootView>
+
+      <TouchableOpacity style={styles.deliveryButton} onPress={() => resetAndNavigate('DeliveryLogin')}>
+        <Icon name='directions-bike' size={RFValue(14)} color="#000"/>
+      </TouchableOpacity>
+    </GestureHandlerRootView> 
   );
 };
 
@@ -144,7 +152,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end',
     alignItems: 'center',
     flexGrow: 1,
-    paddingBottom: 80, // leave space for keyboard + footer
+    paddingBottom: 80, 
   },
   gradient: {
     paddingTop: 60,
@@ -183,5 +191,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#c1c2c3',
     width: '100%',
+  },
+  deliveryButton: {
+    position: 'absolute',
+    top:Platform.OS === 'ios' ? 40:20,
+    right:20,
+    shadowOffset:{width:1,height:1},
+    shadowColor:'#000',
+    shadowOpacity:0.5,
+    shadowRadius:12,
+    elevation:10,
+    zIndex: 99,
+    bottom: 20,
+    padding:10,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#fff',
+    
   },
 });
