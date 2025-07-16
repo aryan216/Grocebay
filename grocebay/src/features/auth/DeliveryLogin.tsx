@@ -6,6 +6,10 @@ import { deliveryLogin } from '@service/authService';
 import LottieView from 'lottie-react-native';
 import CustomText from '@components/ui/CustomText';
 import { Fonts } from '@utils/Constants';
+import Icon  from 'react-native-vector-icons/Ionicons';
+import { RFValue } from 'react-native-responsive-fontsize';
+import CustomInput from '@components/ui/CustomInput';
+import CustomButton from '@components/ui/CustomButton';
 const DeliveryLogin:FC= () => {
   const [email,setEmail]=useState("");
   const [password,setPassword]=useState("");
@@ -39,11 +43,35 @@ const DeliveryLogin:FC= () => {
               Delivery Partner Portal
             </CustomText>
 
-            {/* <CustomInput
+            <CustomInput
             onChangeText={setEmail}
             value={email}
-            left={<Icon/>}
-            /> */}
+            left={<Icon
+            name='mail'
+            color='#f8890e'
+            style={{marginLeft:10}}
+            size={RFValue(16)}/>}
+            placeholder='Email'
+            inputMode='email'
+            right={false}
+            />
+
+            <CustomInput
+            onChangeText={setPassword}
+            value={password}
+            left={<Icon
+            name='key-sharp'
+            color='#f8890e'
+            style={{marginLeft:10}}
+            size={RFValue(16)}/>}
+            placeholder='Password'
+            secureTextEntry
+            right={false}
+            />
+
+            <CustomButton
+             disabled={!email || !password}
+             onPress={handleLogin} title="Login" loading={loading}/>
 
         </View>
 
