@@ -65,8 +65,9 @@ const SplashScreen:FC = () => {
   // Now route based on role
   if (user?.role === "Customer") {
     resetAndNavigate('ProductDashboard');
-  } else if (user?.role === "Delivery") {
-    resetAndNavigate('DeliveryDashboard');
+
+  // } else if (user?.role === "DeliveryPartner") {
+  //   resetAndNavigate('DeliveryDashboard');
   } else {
     resetAndNavigate('CustomerLogin');
   }
